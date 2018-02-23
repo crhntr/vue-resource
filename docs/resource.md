@@ -9,12 +9,12 @@ The resource service can be used globally `Vue.resource` or in a Vue instance `t
 ## Default Actions
 
 ```js
-get: {method: 'GET'},
-save: {method: 'POST'},
-query: {method: 'GET'},
-update: {method: 'PUT'},
-remove: {method: 'DELETE'},
+
+create: {method: 'POST'},
+read: {method: 'GET'}
+update: {method: 'PATCH'},
 delete: {method: 'DELETE'}
+
 ```
 
 ## Example
@@ -23,13 +23,18 @@ delete: {method: 'DELETE'}
 {
   var resource = this.$resource('someItem{/id}');
 
-  // GET someItem/1
-  resource.get({id: 1}).then(response => {
+  // POST someItem
+  resource.create({id: 1}).then(response => {
     this.item = response.body;
   });
 
-  // POST someItem/1
-  resource.save({id: 1}, {item: this.item}).then(response => {
+  // GET someItem/1
+  resource.read({id: 1}).then(response => {
+    this.item = response.body;
+  });
+
+  // PATCH someItem/1
+  resource.update({id: 1}, {item: this.item}).then(response => {
     // success callback
   }, response => {
     // error callback
