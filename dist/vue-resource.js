@@ -1169,11 +1169,11 @@ function Client (context) {
     return Client;
 }
 
-function sendRequest(request, resolve) {
+function sendRequest(request) {
 
     var client = request.client || (inBrowser ? xhrClient : nodeClient);
 
-    resolve(client(request));
+    return client(request);
 }
 
 /**
@@ -1487,11 +1487,9 @@ function opts(action, args) {
 
 Resource.actions = {
 
-    get: {method: 'GET'},
-    save: {method: 'POST'},
-    query: {method: 'GET'},
-    update: {method: 'PUT'},
-    remove: {method: 'DELETE'},
+    create: {method: 'POST'},
+    read: {method: 'GET'},
+    update: {method: 'PATCH'},
     delete: {method: 'DELETE'}
 
 };
