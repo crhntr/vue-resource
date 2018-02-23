@@ -67,7 +67,7 @@ function opts(action, args) {
 Resource.actions = {
 
     create: {method: 'POST'},
-    read: {method: 'GET'}
+    read: {method: 'GET'},
     update: {method: 'PATCH'},
     delete: {method: 'DELETE'}
 
